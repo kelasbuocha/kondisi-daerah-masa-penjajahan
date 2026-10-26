@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPAS Kelas 6 Bab 3 - Jejak Sang Pahlawan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Merriweather (Gothic/Historic Vibe) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#f59e0b',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        emerald: {
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                        },
+                        papyrus: '#fbf0d9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .papyrus-bg {
+            background-color: #fbf0d9;
+            background-image: radial-gradient(#d97706 0.5px, transparent 0.5px), radial-gradient(#d97706 0.5px, #fbf0d9 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0,10px 10px;
+            background-opacity: 0.1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- HEADER / HERO TOP BAR -->
+    <header class="bg-gradient-to-r from-amber-900 via-amber-800 to-slate-900 text-amber-50 shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-500/20 p-2 rounded-xl border border-amber-400/30">
+                    <svg class="w-6 h-6 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C20.832 18.477 19.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-300 block">IPAS Kelas 6 SD</span>
+                    <h1 class="text-base sm:text-lg font-bold leading-tight font-serif">Jejak Sang Pahlawan</h1>
+                </div>
+            </div>
+            <span class="hidden sm:inline-block text-xs bg-amber-900/60 border border-amber-500/30 px-3 py-1 rounded-full text-amber-200">
+                Bab 3: Kondisi Daerahku
+            </span>
+        </div>
+
+        <!-- NAVIGATION TABS (Horizontal Scrollable for Mobile) -->
+        <nav class="bg-amber-950/80 backdrop-blur border-t border-amber-800/50">
+            <div class="max-w-4xl mx-auto px-2 flex space-x-1 overflow-x-auto hide-scrollbar py-1 text-xs font-medium" id="nav-tabs">
+                <button onclick="switchTab('portal1')" id="btn-portal1" class="tab-btn min-w-max px-3 py-2 rounded-lg flex items-center space-x-1.5 transition text-amber-100 bg-amber-800/80 font-semibold shadow-sm">
+                    <span>📜</span>
+                    <span>A. Kondisi Daerah</span>
+                </button>
+                <button onclick="switchTab('portal2')" id="btn-portal2" class="tab-btn min-w-max px-3 py-2 rounded-lg flex items-center space-x-1.5 transition text-amber-300 hover:bg-amber-900/50">
+                    <span>👥</span>
+                    <span>B. 4 Bidang Kehidupan</span>
+                </button>
+                <button onclick="switchTab('portal3')" id="btn-portal3" class="tab-btn min-w-max px-3 py-2 rounded-lg flex items-center space-x-1.5 transition text-amber-300 hover:bg-amber-900/50">
+                    <span>🔍</span>
+                    <span>C. Penyelidikan Sejarah</span>
+                </button>
+                <button onclick="switchTab('portal4')" id="btn-portal4" class="tab-btn min-w-max px-3 py-2 rounded-lg flex items-center space-x-1.5 transition text-amber-300 hover:bg-amber-900/50">
+                    <span>⚖️</span>
+                    <span>D. Membandingkan Masa</span>
+                </button>
+                <button onclick="switchTab('portal5')" id="btn-portal5" class="tab-btn min-w-max px-3 py-2 rounded-lg flex items-center space-x-1.5 transition text-amber-300 hover:bg-amber-900/50">
+                    <span>✏️</span>
+                    <span>E. Evaluasi Mandiri</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 pb-20">
+
+        <!-- ================= PORTAL 1 ================= -->
+        <section id="portal1" class="tab-content block space-y-6">
+            <div class="bg-gradient-to-br from-amber-100 to-amber-50 p-5 rounded-2xl border border-amber-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="p-2.5 bg-amber-700 text-white rounded-xl">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-amber-900 font-serif">A. Apa yang Dimaksud dengan Kondisi Daerah pada Masa Penjajahan?</h2>
+                        <p class="text-xs text-amber-700">Sub-bab: Kondisi Daerahku pada Masa Penjajahan</p>
+                    </div>
+                </div>
+                <div class="text-sm leading-relaxed text-slate-700 space-y-3">
+                    <p>
+                        <strong>Kondisi daerah</strong> adalah keadaan kehidupan masyarakat di suatu wilayah pada waktu tertentu. Kondisi tersebut dapat dilihat dari berbagai bidang, seperti <span class="bg-amber-200 px-1.5 py-0.5 rounded font-medium text-amber-900">ekonomi</span>, <span class="bg-amber-200 px-1.5 py-0.5 rounded font-medium text-amber-900">pendidikan</span>, <span class="bg-amber-200 px-1.5 py-0.5 rounded font-medium text-amber-900">sosial</span>, dan <span class="bg-amber-200 px-1.5 py-0.5 rounded font-medium text-amber-900">budaya</span>.
+                    </p>
+                    <p>
+                        Pada masa penjajahan, kehidupan masyarakat Indonesia dipengaruhi oleh kekuasaan bangsa asing. Pemerintah kolonial mengatur berbagai hal, termasuk kegiatan ekonomi dan kesempatan memperoleh pendidikan.
+                    </p>
+                    <p>
+                        Kondisi setiap daerah tidak selalu sama. Ada daerah yang menjadi pusat perdagangan, perkebunan, atau pemerintahan. Ada pula daerah yang menjadi tempat terjadinya perlawanan terhadap penjajah.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interaktif Sumber Sejarah -->
+            <div class="papyrus-bg p-5 rounded-2xl border-2 border-amber-800/30 shadow-md space-y-4 relative overflow-hidden">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-xs font-bold text-amber-800 uppercase tracking-wide">Penyelidikan Dokumen Tua</span>
+                        <h3 class="text-base font-bold text-slate-900 font-serif">Sumber Sejarah Daerah</h3>
+                    </div>
+                    <span class="text-2xl animate-pulse">🔎</span>
+                </div>
+                <p class="text-xs text-slate-700 leading-relaxed">
+                    Untuk mengetahui kondisi daerah kita pada masa lalu, kita perlu mempelajari <strong>sumber sejarah</strong>. Klik tiap sumber di bawah ini untuk melihat keterangannya:
+                </p>
+                
+                <!-- Interactive Grid Sources -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                    <div class="bg-white/80 backdrop-blur p-3 rounded-xl border border-amber-300 text-center hover:bg-amber-100/80 transition cursor-pointer" onclick="showDetailSource('Foto Lama', 'Mengabadikan gambaran fisik daerah, suasana kota, pakaian, serta kegiatan masyarakat pada masa lalu.')">
+                        <div class="text-2xl mb-1">📸</div>
+                        <p class="text-xs font-bold text-amber-900">Foto Lama</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur p-3 rounded-xl border border-amber-300 text-center hover:bg-amber-100/80 transition cursor-pointer" onclick="showDetailSource('Dokumen & Catatan Sejarah', 'Surat keputusan resmi, peta kuno, laporan pemerintah kolonial, dan catatan tertulis peristiwa masa lalu.')">
+                        <div class="text-2xl mb-1">📜</div>
+                        <p class="text-xs font-bold text-amber-900">Dokumen / Catatan</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur p-3 rounded-xl border border-amber-300 text-center hover:bg-amber-100/80 transition cursor-pointer" onclick="showDetailSource('Peninggalan Bangunan', 'Benteng pertahanan, gedung pemerintahan kolonial, tempat ibadah tua, serta pelabuhan bersejarah.')">
+                        <div class="text-2xl mb-1">🏛️</div>
+                        <p class="text-xs font-bold text-amber-900">Peninggalan Bangunan</p>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur p-3 rounded-xl border border-amber-300 text-center hover:bg-amber-100/80 transition cursor-pointer col-span-2 sm:col-span-3" onclick="showDetailSource('Cerita Saksi Sejarah', 'Kisah tutur dan wawancara langsung dari orang-orang atau sesepuh yang menyaksikan peristiwa sejarah secara langsung.')">
+                        <div class="text-2xl mb-1">🗣️</div>
+                        <p class="text-xs font-bold text-amber-900">Cerita Saksi Sejarah</p>
+                    </div>
+                </div>
+
+                <div id="source-detail" class="hidden bg-amber-900 text-amber-100 p-3 rounded-xl text-xs space-y-1">
+                    <p id="source-title" class="font-bold text-amber-300 text-sm"></p>
+                    <p id="source-desc"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTAL 2 ================= -->
+        <section id="portal2" class="tab-content hidden space-y-4">
+            <div class="bg-slate-900 text-white p-5 rounded-2xl shadow-sm">
+                <h2 class="text-lg font-bold font-serif text-amber-400">B. Kondisi Masyarakat pada Masa Penjajahan</h2>
+                <p class="text-xs text-slate-300 mt-1">Klik tiap bidang di bawah ini untuk mempelajari kondisi masyarakat secara rinci:</p>
+            </div>
+
+            <!-- Accordion Items -->
+            <div class="space-y-3">
+                <!-- Bidang Ekonomi -->
+                <div class="border border-amber-200 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <button onclick="toggleAccordion('acc-ekonomi')" class="w-full px-4 py-3 flex justify-between items-center bg-amber-50/50 hover:bg-amber-100/50 text-left transition">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 bg-amber-700 text-white rounded-lg text-xs font-bold">1</span>
+                            <span class="font-bold text-slate-800 text-sm">🌾 Bidang Ekonomi</span>
+                        </div>
+                        <span class="text-amber-800 font-bold" id="icon-acc-ekonomi">+</span>
+                    </button>
+                    <div id="acc-ekonomi" class="hidden p-4 text-xs text-slate-700 space-y-3 border-t border-amber-100 bg-white">
+                        <p class="leading-relaxed">
+                            Ekonomi berkaitan dengan <strong>pekerjaan, pendapatan, perdagangan, dan kemampuan masyarakat memenuhi kebutuhan hidup</strong>.
+                        </p>
+                        <p class="leading-relaxed">
+                            Pada masa penjajahan, banyak rakyat bekerja sebagai <strong>petani dan buruh</strong>. Sebagian rakyat juga diwajibkan bekerja atau menanam tanaman tertentu untuk kepentingan pemerintah kolonial.
+                        </p>
+                        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 space-y-2">
+                            <p class="leading-relaxed">
+                                Buku IPAS menjelaskan bahwa pada masa <strong>tanam paksa</strong>, rakyat diwajibkan menanam tanaman ekspor. Kebijakan tersebut membebani banyak rakyat.
+                            </p>
+                            <p class="font-bold text-amber-900">🌿 Tanaman Ekspor Tanam Paksa:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-white px-2 py-1 rounded border border-amber-300 font-semibold text-amber-800">☕ Kopi</span>
+                                <span class="bg-white px-2 py-1 rounded border border-amber-300 font-semibold text-amber-800">🍃 Teh</span>
+                                <span class="bg-white px-2 py-1 rounded border border-amber-300 font-semibold text-amber-800">🌱 Nila</span>
+                                <span class="bg-white px-2 py-1 rounded border border-amber-300 font-semibold text-amber-800">🍫 Kakao</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+                            <p class="font-bold text-slate-800">📌 Hal yang dipelajari dari kondisi ekonomi:</p>
+                            <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                <li>Jenis pekerjaan yang dilakukan masyarakat.</li>
+                                <li>Hasil pertanian atau barang yang diperdagangkan.</li>
+                                <li>Pihak yang menguasai kegiatan ekonomi.</li>
+                                <li>Kesulitan yang dihadapi masyarakat untuk memenuhi kebutuhan hidup.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-100/60 p-3 rounded-xl">
+                            <p class="font-bold text-amber-900">❓ Contoh Pertanyaan Pemantik:</p>
+                            <p class="italic text-amber-800">"Apakah masyarakat di daerah kita dahulu bekerja sebagai petani, pedagang, nelayan, atau buruh? Bagaimana pekerjaan tersebut berubah hingga sekarang?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bidang Pendidikan -->
+                <div class="border border-amber-200 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <button onclick="toggleAccordion('acc-pendidikan')" class="w-full px-4 py-3 flex justify-between items-center bg-amber-50/50 hover:bg-amber-100/50 text-left transition">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 bg-amber-700 text-white rounded-lg text-xs font-bold">2</span>
+                            <span class="font-bold text-slate-800 text-sm">🎓 Bidang Pendidikan</span>
+                        </div>
+                        <span class="text-amber-800 font-bold" id="icon-acc-pendidikan">+</span>
+                    </button>
+                    <div id="acc-pendidikan" class="hidden p-4 text-xs text-slate-700 space-y-3 border-t border-amber-100 bg-white">
+                        <p class="leading-relaxed">
+                            Pendidikan berkaitan dengan <strong>kesempatan masyarakat untuk bersekolah, belajar membaca, dan memperoleh pengetahuan</strong>.
+                        </p>
+                        <p class="leading-relaxed">
+                            Pada masa penjajahan, kesempatan memperoleh pendidikan belum merata. Tidak semua rakyat dapat menikmati pendidikan dengan mudah.
+                        </p>
+                        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 space-y-1">
+                            <p class="font-bold text-amber-900">🏫 Politik Etis & Edukasi:</p>
+                            <p class="text-slate-700 leading-relaxed">
+                                Salah satu kebijakan Politik Etis adalah <strong>edukasi</strong>, yaitu pembukaan akses pendidikan melalui sekolah-sekolah rakyat. Terbukanya kesempatan belajar membantu sebagian masyarakat memperoleh pengetahuan yang kemudian berperan dalam perkembangan pergerakan nasional.
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+                            <p class="font-bold text-slate-800">📌 Hal-hal yang dapat dibandingkan:</p>
+                            <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                <li>Kesempatan masyarakat untuk bersekolah.</li>
+                                <li>Ketersediaan sekolah.</li>
+                                <li>Siapa saja yang dapat memperoleh pendidikan.</li>
+                                <li>Perubahan akses pendidikan pada masa sekarang.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-100/60 p-3 rounded-xl">
+                            <p class="font-bold text-amber-900">❓ Contoh Pertanyaan Pemantik:</p>
+                            <p class="italic text-amber-800">"Apakah jumlah sekolah dan kesempatan belajar pada masa sekarang sama dengan masa penjajahan?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bidang Sosial -->
+                <div class="border border-amber-200 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <button onclick="toggleAccordion('acc-sosial')" class="w-full px-4 py-3 flex justify-between items-center bg-amber-50/50 hover:bg-amber-100/50 text-left transition">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 bg-amber-700 text-white rounded-lg text-xs font-bold">3</span>
+                            <span class="font-bold text-slate-800 text-sm">🏛️ Bidang Sosial</span>
+                        </div>
+                        <span class="text-amber-800 font-bold" id="icon-acc-sosial">+</span>
+                    </button>
+                    <div id="acc-sosial" class="hidden p-4 text-xs text-slate-700 space-y-3 border-t border-amber-100 bg-white">
+                        <p class="leading-relaxed">
+                            Kehidupan sosial berkaitan dengan <strong>hubungan antarmanusia, kedudukan dalam masyarakat, dan cara masyarakat menjalani kehidupan sehari-hari</strong>.
+                        </p>
+                        <p class="leading-relaxed">
+                            Pada masa penjajahan, kekuasaan kolonial memengaruhi kehidupan masyarakat. Kebijakan pemerintah kolonial dapat membatasi kebebasan rakyat dan menimbulkan perbedaan kesempatan dalam kehidupan sosial.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+                            <p class="font-bold text-slate-800">📌 Informasi yang dapat dicari:</p>
+                            <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                <li>Kehidupan keluarga dan masyarakat.</li>
+                                <li>Hubungan antarkelompok masyarakat.</li>
+                                <li>Kegiatan sehari-hari penduduk.</li>
+                                <li>Kesulitan yang dialami rakyat akibat kebijakan penjajahan.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-100/60 p-3 rounded-xl">
+                            <p class="font-bold text-amber-900">❓ Contoh Pertanyaan Pemantik:</p>
+                            <p class="italic text-amber-800">"Bagaimana masyarakat dahulu menjalani kehidupan sehari-hari, dan perubahan apa yang dapat kita temukan pada masa kini?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bidang Budaya -->
+                <div class="border border-amber-200 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <button onclick="toggleAccordion('acc-budaya')" class="w-full px-4 py-3 flex justify-between items-center bg-amber-50/50 hover:bg-amber-100/50 text-left transition">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 bg-amber-700 text-white rounded-lg text-xs font-bold">4</span>
+                            <span class="font-bold text-slate-800 text-sm">🎨 Bidang Budaya</span>
+                        </div>
+                        <span class="text-amber-800 font-bold" id="icon-acc-budaya">+</span>
+                    </button>
+                    <div id="acc-budaya" class="hidden p-4 text-xs text-slate-700 space-y-3 border-t border-amber-100 bg-white">
+                        <p class="leading-relaxed">
+                            Budaya mencakup <strong>bahasa, adat istiadat, kesenian, tradisi, dan kebiasaan masyarakat</strong>.
+                        </p>
+                        <p class="leading-relaxed">
+                            Meskipun berada di bawah kekuasaan penjajah, masyarakat Indonesia tetap memiliki dan menjalankan berbagai tradisi serta kebudayaan daerahnya.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+                            <p class="font-bold text-slate-800">📌 Hal yang dipelajari dalam budaya:</p>
+                            <ul class="list-disc pl-4 text-slate-600 space-y-0.5">
+                                <li>Bahasa yang digunakan masyarakat.</li>
+                                <li>Kesenian tradisional yang berkembang.</li>
+                                <li>Adat istiadat dan tradisi masyarakat.</li>
+                                <li>Perubahan budaya dari masa lalu hingga masa kini.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-100/60 p-3 rounded-xl">
+                            <p class="font-bold text-amber-900">❓ Contoh Pertanyaan Pemantik:</p>
+                            <p class="italic text-amber-800">"Kesenian atau tradisi apa yang masih bertahan di daerah kita hingga sekarang?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTAL 3 ================= -->
+        <section id="portal3" class="tab-content hidden space-y-6">
+            <div class="bg-amber-900 text-amber-50 p-5 rounded-2xl">
+                <h2 class="text-lg font-bold font-serif text-amber-300">C. Menyelidiki Sejarah Daerah Sendiri</h2>
+                <p class="text-xs text-amber-200 mt-1">Setiap peserta didik dapat mempelajari sejarah daerahnya melalui kegiatan penyelidikan sederhana. Penyelidikan bertujuan menemukan informasi berdasarkan sumber, bukan sekadar menebak keadaan masa lalu.</p>
+            </div>
+
+            <!-- 3 Steps Visual -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="bg-white p-4 rounded-xl border-t-4 border-amber-600 shadow-sm space-y-1">
+                    <div class="text-xs font-extrabold text-amber-700">Langkah 1</div>
+                    <h3 class="font-bold text-slate-800 text-sm">Mengumpulkan Informasi</h3>
+                    <p class="text-xs text-slate-600">Carilah informasi dari buku sejarah daerah, foto lama, dokumen, situs bersejarah, atau wawancara dengan orang yang mengetahui sejarah daerah.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border-t-4 border-amber-600 shadow-sm space-y-1">
+                    <div class="text-xs font-extrabold text-amber-700">Langkah 2</div>
+                    <h3 class="font-bold text-slate-800 text-sm">Mengidentifikasi Peristiwa & Pihak yang Terlibat</h3>
+                    <p class="text-xs text-slate-600">Cari tahu peristiwa yang terjadi, tokoh yang terlibat, keadaan masyarakat saat itu, dan pengaruh peristiwa tersebut terhadap kehidupan penduduk.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border-t-4 border-amber-600 shadow-sm space-y-1">
+                    <div class="text-xs font-extrabold text-amber-700">Langkah 3</div>
+                    <h3 class="font-bold text-slate-800 text-sm">Menuliskan Hasil Penyelidikan</h3>
+                    <p class="text-xs text-slate-600">Susun informasi menjadi laporan singkat. Pisahkan informasi yang diperoleh dari sumber sejarah dengan pendapat atau dugaan pribadi.</p>
+                </div>
+            </div>
+
+            <!-- Contoh Penyelidikan Lokal: Sungai Kuin Banjarmasin -->
+            <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl space-y-3">
+                <div class="flex items-center space-x-2 text-emerald-900 font-bold font-serif text-base">
+                    <span>🛶</span>
+                    <h3>Contoh Penyelidikan di Daerah Banjarmasin (Sungai Kuin)</h3>
+                </div>
+                <p class="text-xs text-emerald-800 leading-relaxed">
+                    Misalnya, peserta didik ingin mengetahui kehidupan masyarakat di kawasan <strong>Sungai Kuin</strong> pada masa lalu.
+                </p>
+                <div class="bg-white p-4 rounded-xl border border-emerald-200 text-xs space-y-2">
+                    <p class="font-bold text-emerald-900">📌 Informasi yang dapat dicari meliputi:</p>
+                    <ul class="list-disc pl-4 text-slate-700 space-y-1">
+                        <li>Pekerjaan masyarakat yang tinggal di sekitar sungai.</li>
+                        <li>Peran sungai dalam transportasi dan perdagangan.</li>
+                        <li>Perubahan rumah, sarana transportasi, dan kegiatan ekonomi.</li>
+                        <li>Peristiwa atau tokoh sejarah yang berkaitan dengan kawasan tersebut.</li>
+                    </ul>
+                    <p class="text-slate-600 italic border-t border-slate-100 pt-2 mt-1">
+                        *Informasi itu dapat diperoleh dari foto lama, sumber sejarah yang tepercaya, atau wawancara dengan orang yang mengetahui sejarah kawasan tersebut. Jawaban harus didasarkan pada informasi yang berhasil ditemukan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTAL 4 ================= -->
+        <section id="portal4" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-amber-800 to-slate-800 text-white p-5 rounded-2xl space-y-2">
+                <h2 class="text-lg font-bold font-serif text-amber-300">D. Membandingkan Kondisi Masa Penjajahan dan Masa Kini</h2>
+                <p class="text-xs text-amber-100 leading-relaxed">
+                    Setelah memperoleh informasi, kita dapat membandingkan keadaan dahulu dan sekarang. Perbandingan tersebut membantu kita memahami perubahan yang terjadi di daerah.
+                </p>
+            </div>
+
+            <!-- Dynamic Comparison Grid / Table -->
+            <div class="bg-white rounded-2xl border border-amber-200 p-4 shadow-sm space-y-3 text-xs">
+                <h3 class="font-bold text-sm text-amber-900 border-b border-amber-100 pb-2">Tabel Ringkasan Hal yang Dibandingkan</h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                        <p class="font-bold text-amber-900 text-sm mb-1">💰 1. Bidang Ekonomi</p>
+                        <p class="text-slate-700"><strong>Hal yang dibandingkan:</strong> Jenis pekerjaan, kegiatan perdagangan, dan sumber penghasilan masyarakat.</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                        <p class="font-bold text-amber-900 text-sm mb-1">📚 2. Bidang Pendidikan</p>
+                        <p class="text-slate-700"><strong>Hal yang dibandingkan:</strong> Ketersediaan sekolah dan kesempatan belajar bagi seluruh lapisan masyarakat.</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                        <p class="font-bold text-amber-900 text-sm mb-1">⚖️ 3. Bidang Sosial</p>
+                        <p class="text-slate-700"><strong>Hal yang dibandingkan:</strong> Kehidupan masyarakat, kebebasan, dan hubungan antarkelompok.</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                        <p class="font-bold text-amber-900 text-sm mb-1">🎭 4. Bidang Budaya</p>
+                        <p class="text-slate-700"><strong>Hal yang dibandingkan:</strong> Bahasa yang digunakan, kesenian, adat istiadat, dan tradisi daerah.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-100 p-3.5 rounded-xl text-slate-700 space-y-2 border border-slate-200 mt-2">
+                    <p class="font-bold text-slate-900">💡 Catatan Penting Penarikan Kesimpulan:</p>
+                    <p class="leading-relaxed">
+                        Kita tidak boleh langsung menyimpulkan bahwa semua perubahan disebabkan oleh satu faktor saja. Kesimpulan perlu didukung informasi yang tersedia.
+                    </p>
+                    <p class="leading-relaxed italic text-slate-600 bg-white p-2 rounded border border-slate-200">
+                        "Contohnya, apabila ditemukan bahwa sekarang terdapat lebih banyak sekolah dibandingkan masa lalu, peserta didik dapat menyimpulkan bahwa akses pendidikan telah berkembang. Akan tetapi, penyebab dan besarnya perubahan perlu diperiksa melalui sumber informasi."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTAL 5 ================= -->
+        <section id="portal5" class="tab-content hidden space-y-6">
+            
+            <!-- STEP 1: FORM IDENTITAS SISWA -->
+            <div id="quiz-identity-step" class="bg-white p-6 rounded-2xl border-2 border-amber-300 shadow-md space-y-4">
+                <div class="text-center space-y-1">
+                    <span class="text-3xl">📝</span>
+                    <h2 class="text-xl font-bold font-serif text-amber-900">E. Evaluasi Mandiri & Latihan</h2>
+                    <p class="text-xs text-slate-600">IPAS Bab 3 "Jejak Sang Pahlawan" (Total 15 Soal)</p>
+                </div>
+
+                <div class="space-y-2 max-w-sm mx-auto pt-2">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Nama Lengkap Siswa <span class="text-red-500">*</span></label>
+                    <input type="text" id="student-name" placeholder="Ketik Nama Lengkapmu..." class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm font-medium">
+                    <p id="name-error" class="hidden text-xs text-red-600 font-medium">Mohon isi nama lengkap sebelum melanjutkan!</p>
+                </div>
+
+                <button onclick="startQuiz()" class="w-full max-w-sm mx-auto block bg-gradient-to-r from-amber-700 to-amber-800 text-white py-3.5 px-6 rounded-xl font-bold shadow-lg hover:from-amber-800 hover:to-amber-900 transition text-sm">
+                    🚀 Mulai Mengerjakan Latihan
+                </button>
+            </div>
+
+            <!-- STEP 2: SOAL QUIZ FORM -->
+            <form id="quiz-form" onsubmit="submitQuiz(event)" class="hidden space-y-6">
+                
+                <!-- Info Header Siswa -->
+                <div class="bg-amber-100 p-3 rounded-xl border border-amber-300 flex justify-between items-center text-xs">
+                    <div>
+                        <span class="text-amber-800 font-semibold">Siswa: </span>
+                        <span id="display-student-name" class="font-bold text-amber-950"></span>
+                    </div>
+                    <span class="bg-amber-200 text-amber-900 px-2.5 py-1 rounded-md font-bold">15 Soal Evaluasi</span>
+                </div>
+
+                <!-- Bagian I: Benar / Salah (1-5) -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-b border-slate-200 pb-2">
+                        <h3 class="font-bold text-slate-900 text-sm font-serif">Bagian I — Benar atau Salah</h3>
+                        <p class="text-xs text-slate-500">Pilih tombol (B) untuk Benar atau (S) untuk Salah. (Bobot: 4 Poin per nomor)</p>
+                    </div>
+
+                    <!-- Soal 1 -->
+                    <div class="space-y-2 text-xs border-b border-slate-100 pb-3">
+                        <p class="font-medium text-slate-800">1. Kondisi masyarakat pada masa penjajahan dapat dipelajari melalui bidang ekonomi, pendidikan, sosial, dan budaya.</p>
+                        <div class="flex space-x-3">
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_1" value="B" required class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Benar (B)</span>
+                            </label>
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_1" value="S" class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Salah (S)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="space-y-2 text-xs border-b border-slate-100 pb-3">
+                        <p class="font-medium text-slate-800">2. Semua masyarakat pada masa penjajahan memiliki kesempatan yang sama untuk mendapatkan pendidikan.</p>
+                        <div class="flex space-x-3">
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_2" value="B" required class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Benar (B)</span>
+                            </label>
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_2" value="S" class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Salah (S)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="space-y-2 text-xs border-b border-slate-100 pb-3">
+                        <p class="font-medium text-slate-800">3. Kerja paksa dan tanam paksa dapat memengaruhi kehidupan ekonomi masyarakat.</p>
+                        <div class="flex space-x-3">
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_3" value="B" required class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Benar (B)</span>
+                            </label>
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_3" value="S" class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Salah (S)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="space-y-2 text-xs border-b border-slate-100 pb-3">
+                        <p class="font-medium text-slate-800">4. Untuk mengetahui sejarah suatu daerah, kita hanya boleh menggunakan cerita dari satu orang tanpa memeriksa sumber lainnya.</p>
+                        <div class="flex space-x-3">
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_4" value="B" required class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Benar (B)</span>
+                            </label>
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_4" value="S" class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Salah (S)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="space-y-2 text-xs">
+                        <p class="font-medium text-slate-800">5. Membandingkan kehidupan masa penjajahan dengan masa kini dapat membantu kita mengetahui perubahan yang terjadi.</p>
+                        <div class="flex space-x-3">
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_5" value="B" required class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Benar (B)</span>
+                            </label>
+                            <label class="flex items-center space-x-1.5 cursor-pointer bg-slate-50 hover:bg-amber-50 px-3 py-1.5 rounded-lg border border-slate-300">
+                                <input type="radio" name="tf_5" value="S" class="accent-amber-700">
+                                <span class="font-bold text-slate-700">Salah (S)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian II: Uraian Singkat (6-15) -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="border-b border-slate-200 pb-2">
+                        <h3 class="font-bold text-slate-900 text-sm font-serif">Bagian II — Uraian Singkat</h3>
+                        <p class="text-xs text-slate-500">Jawablah pertanyaan berikut dengan singkat dan jelas. (Bobot: 8 Poin per nomor)</p>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">6. Sebutkan empat bidang kehidupan masyarakat yang dapat dipelajari ketika menyelidiki kondisi daerah pada masa penjajahan!</label>
+                            <textarea id="essay_6" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">7. Bagaimana tanam paksa dapat memengaruhi kehidupan ekonomi masyarakat pada masa penjajahan?</label>
+                            <textarea id="essay_7" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">8. Mengapa kesempatan mendapatkan pendidikan pada masa penjajahan tidak selalu sama bagi semua masyarakat?</label>
+                            <textarea id="essay_8" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">9. Sebutkan dua sumber informasi yang dapat digunakan untuk mempelajari sejarah suatu daerah!</label>
+                            <textarea id="essay_9" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">10. Mengapa kita perlu memeriksa sumber informasi sebelum menyimpulkan suatu peristiwa sejarah?</label>
+                            <textarea id="essay_10" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">11. Sebutkan satu contoh perubahan dalam bidang ekonomi antara masa penjajahan dan masa kini!</label>
+                            <textarea id="essay_11" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">12. Sebutkan satu contoh perubahan dalam bidang pendidikan antara masa penjajahan dan masa kini!</label>
+                            <textarea id="essay_12" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">13. Bagaimana cara mengetahui kehidupan masyarakat di sekitar Sungai Kuin pada masa lalu?</label>
+                            <textarea id="essay_13" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">14. Jika kamu ingin mengetahui perubahan alat transportasi di daerahmu dari masa lalu hingga sekarang, informasi apa yang perlu kamu cari? Sebutkan dua!</label>
+                            <textarea id="essay_14" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-medium text-slate-800 block mb-1">15. Menurutmu, mengapa mempelajari kondisi daerah pada masa penjajahan penting bagi kehidupan kita sekarang? Jelaskan secara singkat!</label>
+                            <textarea id="essay_15" required rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Tulis jawabanmu..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-700 text-white py-3.5 px-6 rounded-xl font-bold shadow-lg hover:bg-emerald-800 transition text-sm">
+                    📩 Kirim Jawaban & Selesaikan Evaluasi
+                </button>
+            </form>
+
+            <!-- STEP 3: HASIL AKHIR EVALUASI -->
+            <div id="final-result-step" class="hidden space-y-5">
+                
+                <!-- BANNER SCREENSHOT WA INSTRUCTION -->
+                <div class="bg-amber-400 text-amber-950 p-4 rounded-2xl border-2 border-amber-500 shadow-md flex items-center space-x-3">
+                    <span class="text-2xl">📸</span>
+                    <div>
+                        <p class="text-xs font-extrabold uppercase tracking-wide">Pemberitahuan Penting:</p>
+                        <p class="text-xs font-bold leading-tight">"Silakan SCREENSHOT layar hasil nilai ini dan kirimkan ke WhatsApp Ibu/Bapak Guru!"</p>
+                    </div>
+                </div>
+
+                <!-- CARD SCORE RESULT -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-lg text-center space-y-4">
+                    <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Hasil Akhir Evaluasi Mandiri</span>
+                    
+                    <div class="space-y-1">
+                        <h2 id="res-student-name" class="text-lg font-bold text-slate-900"></h2>
+                        <p id="res-timestamp" class="text-xs text-slate-500 font-medium"></p>
+                    </div>
+
+                    <div class="py-4 bg-amber-50 rounded-xl border border-amber-200 max-w-xs mx-auto">
+                        <span class="text-xs font-bold text-amber-800 block">TOTAL SKOR AKHIR</span>
+                        <span id="res-total-score" class="text-5xl font-extrabold text-amber-900">0</span>
+                        <span class="text-xs font-bold text-amber-700 block mt-1">/ 100</span>
+                    </div>
+
+                    <!-- Breakdown Detail -->
+                    <div class="grid grid-cols-2 gap-2 text-xs border-t border-slate-100 pt-3">
+                        <div class="p-2 bg-slate-50 rounded-lg">
+                            <span class="text-slate-500 block">Skor Benar/Salah:</span>
+                            <span id="res-tf-score" class="font-bold text-slate-800"></span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg">
+                            <span class="text-slate-500 block">Skor Uraian:</span>
+                            <span id="res-essay-score" class="font-bold text-slate-800"></span>
+                        </div>
+                    </div>
+
+                    <!-- Evaluasi Ringkas B/S (Strictly NO Answer Key Revealed) -->
+                    <div id="res-tf-feedback" class="bg-slate-100 p-3 rounded-xl text-xs text-left space-y-1">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- ACTION WA BUTTON -->
+                <a id="btn-wa-share" href="#" target="_blank" class="w-full bg-emerald-600 text-white py-3.5 px-6 rounded-xl font-bold shadow-lg hover:bg-emerald-700 transition text-sm flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span>Kirim Hasil ke WhatsApp Guru</span>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-center py-4 text-xs border-t border-slate-800">
+        <p>© 2026 IPAS Kelas 6 Bab 3 - "Jejak Sang Pahlawan"</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">Satu Berkas Media Pembelajaran Interaktif SD</p>
+    </footer>
+
+    <!-- JAVASCRIPT UTILITIES & QUIZ ENGINE -->
+    <script>
+        // Key Answers for True/False (Strictly hidden from user view in UI)
+        const TF_KEYS = {
+            tf_1: 'B',
+            tf_2: 'S',
+            tf_3: 'B',
+            tf_4: 'S',
+            tf_5: 'B'
+        };
+
+        // INTERNAL RUBRIC & KEYWORDS FOR SYSTEM EVALUATION (HIDDEN FROM PUPIL VIEW)
+        const ESSAY_INTERNAL_RUBRICS = [
+            { num: 6, keywords: ["ekonomi", "pendidikan", "sosial", "budaya"] },
+            { num: 7, keywords: ["ekspor", "beban", "rugi", "kopi", "teh", "nila", "kakao", "wajib", "membebani", "petani", "kesulitan"] },
+            { num: 8, keywords: ["kolonial", "pemerintah", "tidak merata", "edukasi", "terbatas", "golongan", "akses", "politik etis"] },
+            { num: 9, keywords: ["foto", "arsip", "dokumen", "bangunan", "catatan", "saksi", "wawancara", "peninggalan", "buku"] },
+            { num: 10, keywords: ["akurat", "benar", "memastikan", "objektif", "kebenaran", "memeriksa", "teliti", "sumber", "menebak"] },
+            { num: 11, keywords: ["pekerjaan", "perdagangan", "penghasilan", "bebas", "profesi", "pilihan", "modern", "pasar"] },
+            { num: 12, keywords: ["sekolah", "kesempatan", "akses", "semua", "banyak", "gratis", "merata", "mudah"] },
+            { num: 13, keywords: ["wawancara", "foto", "sumber", "arsip", "dokumen", "sejarah", "tokoh", "sungai"] },
+            { num: 14, keywords: ["foto", "kendaraan", "jukung", "perahu", "mobil", "sepeda", "dokar", "narasumber", "wawancara", "catatan"] },
+            { num: 15, keywords: ["perubahan", "menghargai", "sejarah", "pelajaran", "memahami", "masa depan", "perkembangan"] }
+        ];
+
+        let currentStudentName = "";
+
+        // TAB SWITCHING LOGIC
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-800/80', 'text-amber-100', 'font-semibold', 'shadow-sm');
+                btn.classList.add('text-amber-300');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-amber-800/80', 'text-amber-100', 'font-semibold', 'shadow-sm');
+            activeBtn.classList.remove('text-amber-300');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ACCORDION TOGGLE LOGIC
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // SOURCE DETAIL DISPLAY
+        function showDetailSource(title, desc) {
+            const container = document.getElementById('source-detail');
+            document.getElementById('source-title').textContent = title;
+            document.getElementById('source-desc').textContent = desc;
+            container.classList.remove('hidden');
+        }
+
+        // START QUIZ STEP 1 -> STEP 2
+        function startQuiz() {
+            const nameInput = document.getElementById('student-name').value.trim();
+            const errorMsg = document.getElementById('name-error');
+
+            if (!nameInput) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            currentStudentName = nameInput;
+            document.getElementById('display-student-name').textContent = currentStudentName;
+
+            document.getElementById('quiz-identity-step').classList.add('hidden');
+            document.getElementById('quiz-form').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // SUBMIT QUIZ & DIRECTLY CALCULATE SCORES (NO RUBRIC DISPLAYED)
+        function submitQuiz(e) {
+            e.preventDefault();
+
+            // 1. Grade True/False (Soal 1-5)
+            let calculatedTfScore = 0;
+            let tfWrongNumbers = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="tf_${i}"]:checked`)?.value;
+                if (selected === TF_KEYS[`tf_${i}`]) {
+                    calculatedTfScore += 4; // 4 Poin per nomor
+                } else {
+                    tfWrongNumbers.push(i);
+                }
+            }
+
+            // 2. Internal Grading for Essay (Soal 6-15) based on keywords matching
+            let calculatedEssayScore = 0;
+
+            ESSAY_INTERNAL_RUBRICS.forEach((item) => {
+                const answerText = (document.getElementById(`essay_${item.num}`)?.value || "").toLowerCase();
+                let matchedCount = 0;
+
+                item.keywords.forEach(kw => {
+                    if (answerText.includes(kw.toLowerCase())) {
+                        matchedCount++;
+                    }
+                });
+
+                // Scoring calculation based on depth and keywords found
+                let score = 0;
+                if (answerText.length < 5) {
+                    score = 0;
+                } else if (matchedCount >= 3 || (item.num === 6 && matchedCount >= 3)) {
+                    score = 8; // Max score
+                } else if (matchedCount === 2) {
+                    score = 6;
+                } else if (matchedCount === 1) {
+                    score = 4;
+                } else {
+                    // Generous partial score for reasonable length attempt
+                    score = answerText.length > 20 ? 4 : 2;
+                }
+
+                calculatedEssayScore += score;
+            });
+
+            const grandTotal = calculatedTfScore + calculatedEssayScore;
+
+            // Generate Timestamp WITA (Central Indonesia Time - UTC+8)
+            const now = new Date();
+            const options = { 
+                timeZone: 'Asia/Makassar',
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            const timeStringWITA = new Intl.DateTimeFormat('id-ID', options).format(now) + ' WITA';
+
+            // Populate Final View Directly
+            document.getElementById('res-student-name').textContent = currentStudentName;
+            document.getElementById('res-timestamp').textContent = `Selesai pada: ${timeStringWITA}`;
+            document.getElementById('res-total-score').textContent = grandTotal;
+            document.getElementById('res-tf-score').textContent = `${calculatedTfScore} / 20 Poin`;
+            document.getElementById('res-essay-score').textContent = `${calculatedEssayScore} / 80 Poin`;
+
+            // Strict Privacy Rule: Feedback on B/S without revealing key answers
+            const feedbackBox = document.getElementById('res-tf-feedback');
+            if (tfWrongNumbers.length === 0) {
+                feedbackBox.innerHTML = `<p class="text-emerald-800 font-bold">🎉 Luar biasa! Semua soal Benar/Salah dijawab dengan tepat.</p>`;
+            } else {
+                const wrongText = tfWrongNumbers.map(n => `No. ${n}`).join(', ');
+                feedbackBox.innerHTML = `
+                    <p class="font-bold text-amber-900">Catatan Evaluasi Soal Benar/Salah:</p>
+                    <p class="text-slate-700">Jawaban pada ${wrongText} masih kurang tepat. Silakan pelajari kembali materi portal A-D.</p>
+                `;
+            }
+
+            // Prepare WhatsApp URL Draft
+            const waMessage = `Halo Ibu/Bapak Guru, saya ${currentStudentName} telah menyelesaikan Latihan IPAS Bab 3 (Jejak Sang Pahlawan) dengan Total Nilai: ${grandTotal}/100 pada jam ${timeStringWITA}.`;
+            const waUrl = `https://wa.me/?text=${encodeURIComponent(waMessage)}`;
+            document.getElementById('btn-wa-share').href = waUrl;
+
+            // Hide Form and Show Final Results directly
+            document.getElementById('quiz-form').classList.add('hidden');
+            document.getElementById('final-result-step').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
